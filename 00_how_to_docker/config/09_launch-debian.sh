@@ -1,0 +1,33 @@
+#!/bin/sh
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    09_launch-debian.sh                                :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/08/03 03:29:50 by jaleman           #+#    #+#              #
+#    Updated: 2017/08/03 03:29:58 by jaleman          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Include exported enviroment variables
+. "./_ENV.sh"
+
+#------------------------------------------------------------------------------#
+# 9. From the shell of a debian container, install via the container’s
+# package manager everything you need to compile C source code and push it onto
+# a git repo
+#------------------------------------------------------------------------------#
+
+# Pulls the container.
+docker pull debian
+
+# Runs a shell from stdin, and deletes itself one its execution is done.
+docker run -it --rm debian /bin/sh
+
+# Install via the container’s package manager everything needed to compile
+# C source code and push it onto a git repo.
+apt-get update && apt-get upgrade
+apt-get install -y build-essential
+apt-get install -y git

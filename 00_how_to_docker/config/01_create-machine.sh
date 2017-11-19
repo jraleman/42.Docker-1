@@ -1,0 +1,23 @@
+#!/bin/sh
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    01_create-machine.sh                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/08/03 03:29:50 by jaleman           #+#    #+#              #
+#    Updated: 2017/08/03 03:29:58 by jaleman          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Include exported enviroment variables
+. "./_ENV.sh"
+
+#------------------------------------------------------------------------------#
+# 1. Create a virtual machine with docker-machine using the virtualbox driver,
+# and named Char.
+#------------------------------------------------------------------------------#
+
+# Create a VM using the virtualbox diver.
+docker-machine create --driver=virtualbox $VM_NAME

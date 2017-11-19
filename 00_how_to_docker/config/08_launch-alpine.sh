@@ -1,0 +1,27 @@
+#!/bin/sh
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    08_launch-alpine.sh                                :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/08/03 03:29:50 by jaleman           #+#    #+#              #
+#    Updated: 2017/08/03 03:29:58 by jaleman          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Include exported enviroment variables
+. "./_ENV.sh"
+
+#------------------------------------------------------------------------------#
+# 8. Launch a shell from an alpine container, and make sure that you can
+# interact directly with the container via your terminal, and that the container
+# deletes itself once the shell’s execution is done.
+#------------------------------------------------------------------------------#
+
+# Pulls the container.
+docker pull alpine
+
+# Runs a shell from stdin, and deletes itself one its execution is done.
+docker run -it --rm alpine /bin/ash

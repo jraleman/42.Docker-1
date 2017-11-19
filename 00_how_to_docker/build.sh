@@ -11,6 +11,30 @@
 #                                                                              #
 # **************************************************************************** #
 
+# sh config || ./config clean -> run clean.sh inside resources/
+# sh config || ./config -> make an executable directory / binary (see how to do this!)
+# sh config || ./config install -> run the shell files
+
+#------------------------------------------------------------------------------#
+# 0. Install all the dependencies. ;)
+#------------------------------------------------------------------------------#
+
+# Check if the user uses a Mac.
+if [ $(uname -s) = "Darwin" ] ; then
+    echo " > Updating / installing dependencies..."
+
+    # protect all of this, if one fails, just abort abort!!! lol !!!
+    brew update
+    brew tap phinze/homebrew-cask && brew install brew-cask;
+    brew install docker
+    brew install docker-machine
+    brew cask install vagrant;
+    brew cask install virtualbox;
+    brew install shc
+fi
+
+# See how to export variables
+
 #------------------------------------------------------------------------------#
 # 1. Create a virtual machine with docker-machine using the virtualbox driver,
 # and named Char.
