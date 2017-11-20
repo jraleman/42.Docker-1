@@ -1,0 +1,30 @@
+#!/bin/sh
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    14_wordpress-container.sh                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/08/03 03:29:50 by jaleman           #+#    #+#              #
+#    Updated: 2017/08/03 03:29:58 by jaleman          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Include exported enviroment variables
+. "./_ENV.sh"
+
+#------------------------------------------------------------------------------#
+# 14. Launch a wordpress container as a background task, just for fun.
+# The container should be named lair, its 80 port should be bound to the 8080
+# port of the virtual machine, and it should be able to use the spawning-pool
+# container as a database service. You can try to access lair on your machine
+# via a web browser, with the IP address of the virtual machine as a URL.
+#------------------------------------------------------------------------------#
+
+# Print the enviroment variables of the container.
+WORDPRESS_ID=$(docker run --detach \
+                          --name $WORDPRESS_CONTAINER \
+                          --p $WORDPRESS_PORT:80 \
+                          --link $DATABASE_CONTAINER:mysql wordpress)
+export WORDPRESS_ID

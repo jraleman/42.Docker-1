@@ -17,6 +17,7 @@ declare VM_IP
 declare SERVER_ID
 declare SERVER_IP
 declare DATABASE_ID
+declare WORDPRESS_ID
 
 # Export enviroment variables.
 export VM_NAME="Char"
@@ -26,3 +27,5 @@ export VOLUME_NAME="hatchery"
 export DATABASE_NAME="zerglings"
 export DATABASE_PASS="Kerrigan"
 export DATABASE_CONTAINER="spawning-pool"
+export WORDPRESS_CONTAINER="lair"
+export WORDPRESS_PORT="8080"
