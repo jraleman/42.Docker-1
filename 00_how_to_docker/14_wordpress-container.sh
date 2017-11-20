@@ -25,7 +25,7 @@
 # Pulls the docker container.
 docker pull wordpress
 
-# Print the enviroment variables of the container.
+# Launch a wordpress container as a background task.
 WORDPRESS_ID=$(docker run --detach \
                           --name $WORDPRESS_CONTAINER \
                           --publish $WORDPRESS_PORT:80 \
