@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    _ENV.sh                                           :+:      :+:    :+:    #
+#    13_print-container.sh                              :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -11,18 +11,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Declare enviroment variables.
-declare VM_NAME
-declare VM_IP
-declare SERVER_ID
-declare SERVER_IP
-declare DATABASE_ID
+# Include exported enviroment variables
+. "./_ENV.sh"
 
-# Export enviroment variables.
-export VM_NAME="Char"
-export SERVER_NAME="overlord"
-export SERVER_PORT="5000"
-export VOLUME_NAME="hatchery"
-export DATABASE_NAME="zerglings"
-export DATABASE_PASS="Kerrigan"
-export DATABASE_CONTAINER="spawning-pool"
+#------------------------------------------------------------------------------#
+# 13. Print the environment variables of the spawning-pool container in one
+# command, to be sure that you have configured your container properly.
+#------------------------------------------------------------------------------#
+
+# Print the enviroment variables of the container.
+docker inspect --format='{{.Config.Env}}' $DATABASE_CONTAINER
