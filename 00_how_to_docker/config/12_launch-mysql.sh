@@ -26,8 +26,9 @@
 docker pull mysql
 
 # Runs the container in the background (detached).
-DATABASE_ID=$(docker run --detach --name $DATABASE_NAME \
-                         -v /$VOLUME_NAME
-                         --publish $VM_IP:$SERVE_PORT:80 \
-                         --restart=always nginx)
+DATABASE_ID=$(docker run --detach --restart=on-failure \
+                         --name $DATABASE_CONTAINER \
+                         --env="MYSQL_DATABASE=$DATABASE_NAME" \
+                         --env="MYSQL_ROOT_PASSWORD=$DATABASE_PASS" \
+                         -v $VOLUME_NAME:/var/spool/mysql mysql)
 export DATABASE_ID

@@ -18,8 +18,5 @@
 # 10. Create a volume named hatchery.
 #------------------------------------------------------------------------------#
 
-# Volume name.
-VOLUME_NAME="hatchery"
-
 # Create a volume.
 docker volume create $VOLUME_NAME

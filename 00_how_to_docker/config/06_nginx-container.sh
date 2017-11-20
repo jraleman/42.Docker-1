@@ -27,6 +27,6 @@ docker pull nginx
 
 # Runs the container in the background (detached).
 SERVER_ID=$(docker run --detach --name $SERVER_NAME \
-                       --publish $VM_IP:$SERVE_PORT:80 \
+                       --publish $VM_IP:$SERVER_PORT:80 \
                        --restart=always nginx)
 export SERVER_ID

@@ -21,5 +21,8 @@ declare DATABASE_ID
 # Export enviroment variables.
 export VM_NAME="Char"
 export SERVER_NAME="overlord"
-export SERVE_PORT="5000"
+export SERVER_PORT="5000"
+export DATABASE_NAME="zerglings"
 export DATABASE_PASS="Kerrigan"
+export VOLUME_NAME="hatchery"
+export DATABASE_CONTAINER="spawning-pool"
