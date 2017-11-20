@@ -20,5 +20,5 @@
 #------------------------------------------------------------------------------#
 
 # Get internal IP address of the container
-SERVER_IP=docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $SERVER_ID
+SERVER_IP=$(docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $SERVER_ID)
 export SERVER_IP
