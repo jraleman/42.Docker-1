@@ -20,5 +20,4 @@
 #------------------------------------------------------------------------------#
 
 # Define the variables of the VM in the general env of the terminal.
-docker-machine env $VM_NAME
 eval $(docker-machine env "$VM_NAME")

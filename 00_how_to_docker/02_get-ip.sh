@@ -22,4 +22,4 @@
 VM_IP=$(docker-machine ip $VM_NAME)
 export VM_IP
 
-echo "Virtual Machine IP :" $VM_IP
+echo "Virtual Machine $VM_NAME IP:" $VM_IP

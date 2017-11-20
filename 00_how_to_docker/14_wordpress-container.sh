@@ -22,9 +22,12 @@
 # via a web browser, with the IP address of the virtual machine as a URL.
 #------------------------------------------------------------------------------#
 
+# Pulls the docker container.
+docker pull wordpress
+
 # Print the enviroment variables of the container.
 WORDPRESS_ID=$(docker run --detach \
                           --name $WORDPRESS_CONTAINER \
-                          --p $WORDPRESS_PORT:80 \
+                          --publish $WORDPRESS_PORT:80 \
                           --link $DATABASE_CONTAINER:mysql wordpress)
 export WORDPRESS_ID
