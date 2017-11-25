@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    _ENV.sh                                           :+:      :+:    :+:    #
+#    23_overlay-network.sh                              :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -11,31 +11,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Declare enviroment variables.
-declare VM_IP
-declare SERVER_ID
-declare SERVER_IP
-declare DATABASE_ID
-declare WORDPRESS_ID
-declare PHPMYADMIN_ID
-declare FLASK_ID
-declare SWARM_TOKEN
+# Include exported enviroment variables
+. "./_ENV.sh"
 
-# Export enviroment variables.
-export VM_NAME="Char"
-export VM_NAME2="Aiur"
-export SERVER_NAME="overlord"
-export SERVER_PORT="5000"
-export VOLUME_NAME="hatchery"
-export DATABASE_NAME="zerglings"
-export DATABASE_PASS="Kerrigan"
-export DATABASE_CONTAINER="spawning-pool"
-export WORDPRESS_CONTAINER="lair"
-export WORDPRESS_PORT="8080"
-export PHPMYADMIN_PORT="8081"
-export PHPMYADMIN_NAME="roach-warden"
-export FLASK_CONTAINER="Abathur"
-export FLASK_PATH="~/root"
-export FLASK_PORT="3000"
-export SWARM_PORT="2377"
-export OVERLAY_NETWORK="overmind"
+#------------------------------------------------------------------------------#
+# 23. Create an overlay-type internal network that you will name overmind.
+#------------------------------------------------------------------------------#
+
+# Create an overlay internal network.
+docker network create --internal --driver overlay $OVERLAY_NETWORK
