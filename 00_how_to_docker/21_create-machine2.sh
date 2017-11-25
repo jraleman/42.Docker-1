@@ -1,0 +1,23 @@
+#!/bin/sh
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    21_create-machine2.sh                              :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/08/03 03:29:50 by jaleman           #+#    #+#              #
+#    Updated: 2017/08/03 03:29:58 by jaleman          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Include exported enviroment variables
+. "./_ENV.sh"
+
+#------------------------------------------------------------------------------#
+# 21. Create another virtual machine with docker-machine using the virtualbox
+# driver, and name it Aiur.
+#------------------------------------------------------------------------------#
+
+# Create another virtual machine ;)
+docker-machine create --driver=virtualbox $VM_NAME2
