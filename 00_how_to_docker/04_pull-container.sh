@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    18_relaunch-container.sh                           :+:      :+:    :+:    #
+#    04_pull-container.sh                               :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -15,8 +15,8 @@
 . "./_ENV.sh"
 
 #------------------------------------------------------------------------------#
-# 18. Relaunch the overlord container.
+# 4. Get the hello-world container from the Docker Hub, where it’s available.
 #------------------------------------------------------------------------------#
 
-# Restart a container.
-docker restart $SERVER_NAME
+# Gets the hello-world container from Docker Hub.
+docker pull hello-world

@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    02_get-ip.sh                                       :+:      :+:    :+:    #
+#    13_print-container-vars.sh                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -15,11 +15,9 @@
 . "./_ENV.sh"
 
 #------------------------------------------------------------------------------#
-# 2. Get the IP address of the Char virtual machine.
+# 13. Print the environment variables of the spawning-pool container in one
+# command, to be sure that you have configured your container properly.
 #------------------------------------------------------------------------------#
 
-# Get the IP address of the VM.
-VM_IP=$(docker-machine ip $VM_NAME)
-export VM_IP
-
-echo "Virtual Machine $VM_NAME IP:" $VM_IP
+# Print the enviroment variables of the container.
+docker inspect --format='{{.Config.Env}}' $DATABASE_CONTAINER

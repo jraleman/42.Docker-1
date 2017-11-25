@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    10_create-hatchery.sh                              :+:      :+:    :+:    #
+#    18_container-restart.sh                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -15,8 +15,8 @@
 . "./_ENV.sh"
 
 #------------------------------------------------------------------------------#
-# 10. Create a volume named hatchery.
+# 18. Relaunch the overlord container.
 #------------------------------------------------------------------------------#
 
-# Create a volume.
-docker volume create $VOLUME_NAME
+# Restart a container.
+docker restart $SERVER_NAME

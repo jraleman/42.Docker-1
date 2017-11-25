@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    13_print-container.sh                              :+:      :+:    :+:    #
+#    07_get-container-ip.sh                             :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -15,9 +15,11 @@
 . "./_ENV.sh"
 
 #------------------------------------------------------------------------------#
-# 13. Print the environment variables of the spawning-pool container in one
-# command, to be sure that you have configured your container properly.
+# 7. Get the internal IP address of the overlord container without starting its
+# shell and in one command.
 #------------------------------------------------------------------------------#
 
-# Print the enviroment variables of the container.
-docker inspect --format='{{.Config.Env}}' $DATABASE_CONTAINER
+# Get internal IP address of the container
+SERVER_IP=$(docker inspect --format \
+        '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $SERVER_ID)
+export SERVER_IP

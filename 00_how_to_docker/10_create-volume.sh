@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    07_get-overlord-ip.sh                              :+:      :+:    :+:    #
+#    10_create-volume.sh                                :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -15,11 +15,8 @@
 . "./_ENV.sh"
 
 #------------------------------------------------------------------------------#
-# 7. Get the internal IP address of the overlord container without starting its
-# shell and in one command.
+# 10. Create a volume named hatchery.
 #------------------------------------------------------------------------------#
 
-# Get internal IP address of the container
-SERVER_IP=$(docker inspect --format \ 
-        '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $SERVER_ID)
-export SERVER_IP
+# Create a volume.
+docker volume create $VOLUME_NAME

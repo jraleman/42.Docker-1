@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    05_run-hello-world.sh                              :+:      :+:    :+:    #
+#    02_get-machine-ip.sh                               :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -15,9 +15,11 @@
 . "./_ENV.sh"
 
 #------------------------------------------------------------------------------#
-# 5. Launch the hello-world container, and make sure that it prints its welcome
-# message, then leaves it.
+# 2. Get the IP address of the Char virtual machine.
 #------------------------------------------------------------------------------#
 
-# Runs the hello-world container.
-docker run hello-world
+# Get the IP address of the VM.
+VM_IP=$(docker-machine ip $VM_NAME)
+export VM_IP
+
+echo "Virtual Machine $VM_NAME IP:" $VM_IP
