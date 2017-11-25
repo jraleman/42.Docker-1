@@ -19,6 +19,7 @@ declare SERVER_IP
 declare DATABASE_ID
 declare WORDPRESS_ID
 declare PHPMYADMIN_ID
+declare FLASK_ID
 
 # Export enviroment variables.
 export VM_NAME="Char"
@@ -32,3 +33,6 @@ export WORDPRESS_CONTAINER="lair"
 export WORDPRESS_PORT="8080"
 export PHPMYADMIN_PORT="8081"
 export PHPMYADMIN_NAME="roach-warden"
+export FLASK_CONTAINER="Abathur"
+export FLASK_PATH="~/root"
+export FLASK_PORT="3000"

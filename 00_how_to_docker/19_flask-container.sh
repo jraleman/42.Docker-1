@@ -1,0 +1,73 @@
+#!/bin/sh
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    19_flask-container.sh                              :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/08/03 03:29:50 by jaleman           #+#    #+#              #
+#    Updated: 2017/08/03 03:29:58 by jaleman          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Include exported enviroment variables
+. "./_ENV.sh"
+
+#------------------------------------------------------------------------------#
+# 19. Python container, 2-slim version, its /root folder will be bound to a
+# HOME folder on your host, and its 3000 port will be bound to the 3000 port
+# of your virtual machine.
+# You will personalize this container so that you can use the Flask
+# micro-framework in its latest version. You will make sure that an html
+# page displaying "Hello World" with <h1> tags can be served by Flask.
+# You will test that your container is properly set up by accessing,
+# via curl or a web browser, the IP address of your virtual machine on the\
+# 3000 port.
+# You will also list all the necessary commands in your repository.
+#------------------------------------------------------------------------------#
+
+# Directory to be bound from the /root directory of the python container.
+mkdir -p ~/root
+
+# Pulls the python container
+docker pull python
+
+# Launch a flash (python) container, with a lot of crazy personalized stuff.
+FLASK_ID=$(docker run -it --name $FLASK_CONTAINER \
+                          --volume $FLASK_PATH:/root \
+                          --publish $FLASK_PORT:3000 \
+                          python:2-slim bash)
+
+export FLASK_ID
+
+#*
+## List of necessary commands :)
+## .............................................................................
+#*
+
+# apt-get update && apt-get install -y pip
+# pip install Flask
+
+# touch ~root/app.py
+
+# echo "from flask import Flask" >> ~root/app.py
+# echo "app = Flask(__name__)" >> ~root/app.py
+# echo "" >> ~root/app.py
+# echo "@app.route('/')"  >> ~root/app.py
+# echo "" >> ~root/app.py
+# echo "def index():" >> ~root/app.py
+# echo "    return ('<!DOCTYPE html> \\" >> ~root/app.py
+# echo "             <html> \\" >> ~root/app.py
+# echo "               <head> \\" >> ~root/app.py
+# echo "                 <title>Hello World!</title> \\" >> ~root/app.py
+# echo "               </head> \\" >> ~root/app.py
+# echo "               <body> \\" >> ~root/app.py
+# echo "                 <h1>Hello World</h1> \\" >> ~root/app.py
+# echo "               </body> \\" >> ~root/app.py
+# echo "             </html>')" >> ~root/app.py
+# echo "" >> ~root/app.py
+# echo "if __name__ == \"__main__\":" >> ~root/app.py
+# echo "    app.run(host=\"0.0.0.0\", port=\"3000\")" >> ~root/app.py
+
+# python ~root/app.py
