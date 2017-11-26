@@ -26,7 +26,11 @@ docker pull debian
 # Runs a shell from stdin, and deletes itself one its execution is done.
 docker run -it --rm debian /bin/sh
 
-# Install via the container’s package manager everything needed to compile
-# C source code and push it onto a git repo.
-apt-get update && apt-get upgrade -y
-apt-get install -y build-essential gcc git
+#*
+## Install via the container’s package manager everything needed to compile
+## C source code and push it onto a git repo.
+## .............................................................................
+#*
+
+# apt-get update && apt-get upgrade -y
+# apt-get install -y build-essential gcc git
