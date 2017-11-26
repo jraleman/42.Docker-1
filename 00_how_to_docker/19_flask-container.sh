@@ -28,7 +28,7 @@
 #------------------------------------------------------------------------------#
 
 # Directory to be bound from the /root directory of the python container.
-mkdir -p $FLASK_PATH
+mkdir $FLASK_PATH
 
 # Pulls the python container
 docker pull python
