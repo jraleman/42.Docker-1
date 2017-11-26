@@ -21,3 +21,4 @@
 
 # Define the variables of the VM in the general env of the terminal.
 eval $(docker-machine env "$VM_NAME")
+echo "Variables defined"
