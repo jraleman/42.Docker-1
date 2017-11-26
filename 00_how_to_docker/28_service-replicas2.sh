@@ -25,4 +25,4 @@ docker service create --name $SERVICE_NAME3 \
                       --replicas 2 \
                       -e OC_DEFAULT_USER=$SERVICE_USER \
                       -e OC_DEFAULT_PASS=$SERVICE_PASS \
-                      42school/$SERVICE_NAME3
+                      42school/marine-squad
