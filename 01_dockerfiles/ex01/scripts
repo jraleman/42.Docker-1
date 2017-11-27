@@ -1,0 +1,20 @@
+#!/bin/sh
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    scripts                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/08/03 03:29:50 by jaleman           #+#    #+#              #
+#    Updated: 2017/08/03 03:29:58 by jaleman          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Sources:
+# https://raw.githubusercontent.com/overshard/docker-teamspeak/master/scripts/start
+
+# Run the teamspeak server
+export LD_LIBRARY_PATH=/opt/teamspeak
+cd /opt/teamspeak
+./ts3server logpath=/data/logs
