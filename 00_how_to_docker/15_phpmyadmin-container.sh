@@ -21,9 +21,6 @@
 # in the spawning-pool container.
 #------------------------------------------------------------------------------#
 
-# Pulls the docker container.
-docker pull phpmyadmin
-
 # Launch a phpmyadmin container as a background task.
 PHPMYADMIN_ID=$(docker run --detach \
                            --name $PHPMYADMIN_NAME \
