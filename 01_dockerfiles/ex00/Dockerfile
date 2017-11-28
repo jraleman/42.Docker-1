@@ -19,6 +19,11 @@
 #------------------------------------------------------------------------------#
 # From an alpine image you’ll add to your container your favorite text editor,
 # vim or emacs, that will launch along with your container.
+# Test(s):
+# ```
+#   > docker build -t ft_vim .
+#   > docker run -it ft_vim
+# ```
 #------------------------------------------------------------------------------#
 
 # Specify the base image from the docker build.
@@ -29,4 +34,4 @@ RUN   apk add --update vim
 RUN   echo "hello world!" >> hello-world.txt
 
 # Open hello-world.txt with Vim.
-CMD   ["vim", "hello-world.txt"]
+ENTRYPOINT ["vim", "hello-world.txt"]
