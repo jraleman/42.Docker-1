@@ -21,8 +21,8 @@
 # vim or emacs, that will launch along with your container.
 # Test(s):
 # ```
-#   > docker build -t ft_vim .
-#   > docker run -it ft_vim
+#   > docker build -t ex00 .
+#   > docker run -it ex00
 # ```
 #------------------------------------------------------------------------------#
 
