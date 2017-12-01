@@ -28,14 +28,14 @@
 #------------------------------------------------------------------------------#
 
 # Directory to be bound from the /root directory of the python container.
-mkdir $FLASK_PATH
+mkdir $HOME/root
 
 # Pulls the python container
 docker pull python
 
 # Launch a flash (python) container, with a lot of crazy personalized stuff.
 FLASK_ID=$(docker run -it --name $FLASK_CONTAINER \
-                          --volume $FLASK_PATH:/root \
+                          --volume $HOME/root:/root \
                           --publish $FLASK_PORT:3000 \
                           python:2-slim bash)
 
