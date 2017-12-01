@@ -14,15 +14,13 @@
 # https://github.com/overshard/docker-teamspeak
 
 #------------------------------------------------------------------------------#
-# Docker can be useful to test an application that’s still being developed
-# without polluting your libraries. You will have to design a Dockerfile that
-# gets the development version of Gogs, installs it with all the dependencies
-# and the necessary configurations, and launches the application, all as it
-# builds. The container will be deemed valid if you can access the web client,
-# and if you can interact via GIT with this container.
+# Design a Dockerfile that gets the development version of Gogs, installs it
+# with all the dependencies and the necessary configurations, and launches the
+# application, all as it builds. The container will be deemed valid if you can
+# access the web client, and if you can interact via GIT with this container.
 # Test(s):
 # ```
-#   > docker build --tag gogs .
+#   > docker build -t gogs .
 #   > docker run --detach --name Gogs --publish 3000:3000 gogs
 #   > docker run -it gogs
 # ```
