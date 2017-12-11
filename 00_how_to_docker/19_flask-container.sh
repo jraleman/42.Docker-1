@@ -34,7 +34,7 @@ mkdir $HOME/root
 docker pull python
 
 # Launch a flash (python) container, with a lot of crazy personalized stuff.
-FLASK_ID=$(docker run -it --name $FLASK_CONTAINER \
+FLASK_ID=$(docker run -dt --name $FLASK_CONTAINER \
                           --volume $HOME/root:/root \
                           --publish $FLASK_PORT:3000 \
                           python:2-slim bash)
