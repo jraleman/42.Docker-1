@@ -25,18 +25,16 @@ declare filenames=(../00_how_to_docker/*)
 
 
 # declare description=(*) <- define list array
-# brew install
-# parse package.json ???
 
 # Pre-setup
 # Install required dependencies
 
-# Machine
+# Machines
 # Create a new docker machine
 # Get IP of a machine
 # Define variables
 
-# Container
+# Containers
 # Create a new pull container
 # Run a container
 # Create nginx container
@@ -45,8 +43,40 @@ declare filenames=(../00_how_to_docker/*)
 # Launch Debian container
 
 # Volumes
-# Create volums
+# Create volumes
 # List volumes
+
+# Container types
+# MySQL Container
+# Print container variables
+# Wordpress Container
+# PHPMyAdmin container
+
+# Container operations
+# Database logs
+# Display container
+# Restart container
+
+# Swarms
+# Create swarm
+# Create a second Docker machine
+# Join swarm
+# Overlay network
+
+# Services
+# Create service
+# List services
+# Service replicas
+# Service logs
+# A second service replica
+# Service task
+# Service scale
+
+# Delete
+# Service delete
+# Containers delete
+# Images Delete
+# Machine delete
 
 declare count=$(ls -l | grep ^- | wc -l)
 
