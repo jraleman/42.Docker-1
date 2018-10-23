@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    27_service-logs.sh                                 :+:      :+:    :+:    #
+#    27                                                 :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -12,11 +12,11 @@
 # **************************************************************************** #
 
 # Include exported enviroment variables
-. "./_ENV.sh"
+source "./_vars"
 
 #------------------------------------------------------------------------------#
 # 27. Get the real-time logs of one the tasks of the engineering-bay service.
 #------------------------------------------------------------------------------#
 
 # Get the real-time logs.
-docker service logs --follow `docker service ps --filter "name=engineering-bay.2" engineering-bay --quiet`
+docker service logs --follow `docker service ps --filter "name=engineering-bay.2" $SERVICE_NAME2 --quiet`

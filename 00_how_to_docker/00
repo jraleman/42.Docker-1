@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    00_install-dependencies.sh                         :+:      :+:    :+:    #
+#    00                                                 :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -18,12 +18,9 @@
 # Check if the user uses a Mac.
 if [ $(uname -s) = "Darwin" ] ; then
     echo " > Updating / installing dependencies..."
-    # protect all of this, if one fails, just abort abort!!! lol !!!
     brew update
-    brew tap phinze/homebrew-cask && brew install brew-cask;
     brew install docker
     brew install docker-machine
-    brew cask install vagrant;
     brew cask install virtualbox;
     brew install shc
 fi
