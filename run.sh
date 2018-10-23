@@ -70,7 +70,13 @@ declare -a array=(
 for n in {00..34}; do
 	echo "Running     :" ${filenames[$n]}
 	echo "Description :" ${array[$n]}
-	source ${filepath}/$(printf "%02d\n" "$((10#$n))")
+	cd ${filepath}
+	source $(printf "%02d\n" "$((10#$n))")
+	if [ $n -eq 1 ]; then
+		source "_vars"
+		docker-machine start $VM_NAME
+	fi
+	cd ../
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 done
 
