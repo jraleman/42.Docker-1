@@ -11,14 +11,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-if [[ $# -eq 0 ]] ; then
-	echo "Usage: sh $0 <path-to-docker-files>"
-	exit 0
-fi
+# if [[ $# -eq 0 ]] ; then
+# 	echo "Usage: sh $0 <path-to-docker-files>"
+# 	exit 0
+# fi
 
 declare n=0
 declare prefix=0
-declare filepath=$1
+# declare filepath=$1
+declare filepath="00_how_to_docker"
 declare count=$(ls -l ${filepath} | grep ^- | wc -l)
 declare filenames=(${filepath}/*)
 declare -a array=(
@@ -71,9 +72,10 @@ for n in {00..34}; do
 	echo "Running     :" ${filenames[$n]}
 	echo "Description :" ${array[$n]}
 	cd ${filepath}
-	source $(printf "%02d\n" "$((10#$n))")
-	if [ $n -eq 1 ]; then
+	sh $(printf "%02d\n" "$((10#$n))")
+	if [ $n -eq 01 ]; then
 		source "_vars"
+		eval $(docker-machine env $VN_NAME)
 		docker-machine start $VM_NAME
 	fi
 	cd ../
