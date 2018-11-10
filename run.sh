@@ -64,7 +64,7 @@ declare -a array=(
                   ) ;
 
 # Start fresh
-sh "resources/clean.sh" &>/dev/null ;
+sh resources/clean.sh &>/dev/null ;
 
 # Execute the scripts, one by one
 for n in {00..34}; do
