@@ -11,6 +11,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-docker ps -aq;
-docker stop $(docker ps -aq);
-docker rm $(docker ps -aq);
+for machines in 'Char' 'Aiur' ; do
+    eval $(docker-machine env "$machines") ;
+    docker ps -aq ;
+    docker stop $(docker ps -aq) ;
+    docker rm $(docker ps -aq) ;
+done
+
+exit ;
