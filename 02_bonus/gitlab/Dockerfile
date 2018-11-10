@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
+# Check README file! School made me do this I guess?
 MAINTAINER  Jose Ramon Aleman
 
 # Specifies Ubuntu v14.04 as Base Image

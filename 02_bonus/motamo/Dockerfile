@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
+# Check README file! School made me do this I guess?
 MAINTAINER  Jose Ramon Aleman
 
 # Specifies Apache with PHP v7.1 as Base Image
