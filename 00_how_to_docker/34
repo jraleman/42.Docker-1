@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 34. Delete the Aiur virtual machine without using rm -rf.
+# Delete the Aiur virtual machine without using rm -rf.
 #------------------------------------------------------------------------------#
 
 # Delete a virtual machine.
-docker-machine rm $VM_NAME2 --force
+docker-machine rm $VM_NAME2 --force ;
+
+exit ;

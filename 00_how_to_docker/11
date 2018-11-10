@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 11. List all the Docker volumes created on the machine.
+# List all the Docker volumes created on the machine.
 #------------------------------------------------------------------------------#
 
 # List all the volumes created on the machine.
-docker volume ls
+docker volume ls ;
+
+exit ;

@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 17. Display all the currently active containers on the Char virtual machine
+# Display all the currently active containers on the Char virtual machine
 #------------------------------------------------------------------------------#
 
 # Display all the currently active containers.
-docker ps
+docker ps ;
+
+exit ;

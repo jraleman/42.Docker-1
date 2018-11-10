@@ -11,14 +11,16 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 30. Increase the number of copies of the marines service up to twenty,
+# Increase the number of copies of the marines service up to twenty,
 # because there’s never enough Marines to eliminate Zergs.
 # (Remember to take a look at the tasks and logs of the servic you’ll see)
 #------------------------------------------------------------------------------#
 
 # Increase the number of copies in a service.
-docker service scale $SERVICE_NAME3=20
+docker service scale $SERVICE_NAME3=20 ;
+
+exit ;

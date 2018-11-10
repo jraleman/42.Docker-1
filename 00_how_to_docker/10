@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 10. Create a volume named hatchery.
+# Create a volume named hatchery.
 #------------------------------------------------------------------------------#
 
 # Create a volume.
-docker volume create $VOLUME_NAME
+docker volume create $VOLUME_NAME ;
+
+exit ;

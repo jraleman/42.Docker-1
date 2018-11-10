@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 4. Get the hello-world container from the Docker Hub, where it’s available.
+# Get the hello-world container from the Docker Hub, where it’s available.
 #------------------------------------------------------------------------------#
 
 # Gets the hello-world container from Docker Hub.
-docker pull hello-world
+docker pull hello-world ;
+
+exit ;

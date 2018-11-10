@@ -11,11 +11,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 26. Launch a 42school/engineering-bay service in two replicas.
+# Launch a 42school/engineering-bay service in two replicas.
 # This service will be named engineering-bay and
 # will be on the overmind network.
 #------------------------------------------------------------------------------#
@@ -27,3 +27,5 @@ docker service create --name $SERVICE_NAME2 \
                       -e OC_DEFAULT_PASS=$SERVICE_PASS \
                       --replicas 2 \
                       42school/$SERVICE_NAME2
+
+exit ;

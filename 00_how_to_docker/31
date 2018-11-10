@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 31. Force quit and delete all the services on the local swarm, in one command.
+# Force quit and delete all the services on the local swarm, in one command.
 #------------------------------------------------------------------------------#
 
 # Force quit and delete all the services on the local swarm.
-docker swarm leave --force
+docker swarm leave --force ;
+
+exit ;

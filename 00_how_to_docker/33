@@ -11,13 +11,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 33. Delete all the container images stored on the Char virtual machine,
+# Delete all the container images stored on the Char virtual machine,
 # in one command as well.
 #------------------------------------------------------------------------------#
 
 # Delete all the container images.
-docker rmi -f $(docker images -a -q)
+docker rmi -f $(docker images -a -q) ;
+
+exit ;

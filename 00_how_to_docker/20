@@ -11,13 +11,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 20. Create a local swarm, the Char virtual machine should be its manager.
+# Create a local swarm, the Char virtual machine should be its manager.
 #------------------------------------------------------------------------------#
 
 # Create a local swarm.
 # More about swarms: https://www.youtube.com/watch?v=KC4Ad1DS8xU
-docker swarm init --advertise-addr $VM_IP
+docker swarm init --advertise-addr $VM_IP ;

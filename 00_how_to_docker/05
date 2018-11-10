@@ -11,13 +11,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 5. Launch the hello-world container, and make sure that it prints its welcome
+# Launch the hello-world container, and make sure that it prints its welcome
 # message, then leaves it.
 #------------------------------------------------------------------------------#
 
 # Runs the hello-world container.
-docker run hello-world
+docker run hello-world ;
+
+exit ;

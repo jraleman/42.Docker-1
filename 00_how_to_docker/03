@@ -11,14 +11,17 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
 
 #------------------------------------------------------------------------------#
-# 3. Define the variables needed by your virtual machine Char in the general env
+# Define the variables needed by your virtual machine Char in the general env
 # of your terminal, so that you can run the docker ps command without errors.
 #------------------------------------------------------------------------------#
 
 # Define the variables of the VM in the general env of the terminal.
-eval $(docker-machine env "$VM_NAME")
-echo "Variables defined"
+ENV_VAR=$(docker-machine env "$VM_NAME") ;
+eval $ENV_VAR ;
+echo "Variables defined" ;
+
+export ENV_VAR ;
+exit ;

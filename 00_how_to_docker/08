@@ -11,17 +11,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 8. Launch a shell from an alpine container, and make sure that you can
+# Launch a shell from an alpine container, and make sure that you can
 # interact directly with the container via your terminal, and that the container
 # deletes itself once the shell’s execution is done.
 #------------------------------------------------------------------------------#
 
 # Pulls the container.
-docker pull alpine
+docker pull alpine ;
 
 # Runs a shell from stdin, and deletes itself one its execution is done.
-docker run -it --rm alpine /bin/ash
+docker run -it --rm alpine /bin/ash ;
+
+exit ;

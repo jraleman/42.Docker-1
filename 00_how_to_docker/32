@@ -11,13 +11,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 32. Force quit and delete all the containers (whatever their status), in one
+# Force quit and delete all the containers (whatever their status), in one
 # command.
 #------------------------------------------------------------------------------#
 
 # Force quit and delete all the containers
-docker rm --force $(docker ps -a -q)
+docker rm --force $(docker ps -a -q) ;
+
+exit ;

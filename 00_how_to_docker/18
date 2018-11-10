@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 18. Relaunch the overlord container.
+# Relaunch the overlord container.
 #------------------------------------------------------------------------------#
 
 # Restart a container.
-docker restart $SERVER_NAME
+docker restart $SERVER_NAME ;
+
+exit ;

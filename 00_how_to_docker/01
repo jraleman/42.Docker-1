@@ -11,13 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
 
 #------------------------------------------------------------------------------#
-# 1. Create a virtual machine with docker-machine using the virtualbox driver,
+# Create a virtual machine with docker-machine using the virtualbox driver,
 # and named Char.
 #------------------------------------------------------------------------------#
 
 # Create a VM using the virtualbox diver.
-docker-machine create --driver=virtualbox $VM_NAME
+docker-machine create --driver=virtualbox $VM_NAME ;
+
+exit ;

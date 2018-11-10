@@ -11,11 +11,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 28. Launch a 42school/marine-squad in two replicas.
+# Launch a 42school/marine-squad in two replicas.
 # This service will be named... marines and will be on the overmind network.
 #------------------------------------------------------------------------------#
 
@@ -25,4 +25,6 @@ docker service create --name $SERVICE_NAME3 \
                       --replicas 2 \
                       -e OC_DEFAULT_USER=$SERVICE_USER \
                       -e OC_DEFAULT_PASS=$SERVICE_PASS \
-                      42school/marine-squad
+                      42school/marine-squad ;
+
+exit ;

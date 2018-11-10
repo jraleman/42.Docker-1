@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 25. List all the services of the local swarm.
+# List all the services of the local swarm.
 #------------------------------------------------------------------------------#
 
 # List all the services of the local swarm.
 docker service ls
+
+exit ;

@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 23. Create an overlay-type internal network that you will name overmind.
+# Create an overlay-type internal network that you will name overmind.
 #------------------------------------------------------------------------------#
 
 # Create an overlay internal network.
-docker network create --internal --driver overlay $OVERLAY_NETWORK
+docker network create --internal --driver overlay $OVERLAY_NETWORK ;
+
+exit ;

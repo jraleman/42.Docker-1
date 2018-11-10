@@ -11,11 +11,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 24. Launch a rabbitmq SERVICE that will be named orbital-command.
+# Launch a rabbitmq SERVICE that will be named orbital-command.
 # You should define a specific user and password for the RabbitMQ service,
 # they can be whatever you want. This service will be on the overmind network.
 #------------------------------------------------------------------------------#
@@ -27,3 +27,5 @@ docker service create --name $SERVICE_NAME \
                       -e RABBITMQ_DEFAULT_USER=$SERVICE_USER \
                       -e RABBITMQ_DEFAULT_PASS=$SERVICE_PASS \
                       rabbitmq
+
+exit ;

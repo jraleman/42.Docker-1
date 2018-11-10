@@ -11,13 +11,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 13. Print the environment variables of the spawning-pool container in one
+# Print the environment variables of the spawning-pool container in one
 # command, to be sure that you have configured your container properly.
 #------------------------------------------------------------------------------#
 
 # Print the enviroment variables of the container.
-docker inspect --format='{{.Config.Env}}' $DATABASE_CONTAINER
+docker inspect --format='{{.Config.Env}}' $DATABASE_CONTAINER ;
+
+exit ;

@@ -11,12 +11,16 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 27. Get the real-time logs of one the tasks of the engineering-bay service.
+# Get the real-time logs of one the tasks of the engineering-bay service.
 #------------------------------------------------------------------------------#
 
 # Get the real-time logs.
-docker service logs --follow `docker service ps --filter "name=engineering-bay.2" $SERVICE_NAME2 --quiet`
+docker service logs --follow `docker service ps \
+                              --filter "name=engineering-bay.2" $SERVICE_NAME2 \
+                              --quiet` ;
+
+exit ;

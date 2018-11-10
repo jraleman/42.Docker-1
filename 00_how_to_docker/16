@@ -11,14 +11,16 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 16. Look up the spawning-pool container’s logs in real time without
+# Look up the spawning-pool container’s logs in real time without
 # running its shell.
 #   >  `ctrl + \` to stop
 #------------------------------------------------------------------------------#
 
 # Prints container's logs.
-docker logs --follow $DATABASE_CONTAINER
+docker logs --follow $DATABASE_CONTAINER ;
+
+exit ;

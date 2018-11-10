@@ -12,15 +12,26 @@
 # **************************************************************************** #
 
 #------------------------------------------------------------------------------#
-# 0. Install all the dependencies. ;)
+# Install all the dependencies. ;)
 #------------------------------------------------------------------------------#
 
 # Check if the user uses a Mac.
 if [ $(uname -s) = "Darwin" ] ; then
-    echo " > Updating / installing dependencies..."
-    brew update
-    brew install docker
-    brew install docker-machine
-    brew cask install virtualbox;
-    brew install shc
+    # Update packages
+    echo " > Updating / installing dependencies..." ;
+    brew update &>/dev/null ;
+    echo "...this might take a few seconds" ;
+    # Install packages only if they don't exist
+    for pkg in docker docker-machine shc ; do
+        if brew list -1 | grep -q "^${pkg}\$"; then
+            echo "Package '$pkg' is installed" ;
+        else
+            echo "Installing package $pkg" ;
+            brew install $pkg &>/dev/null ;
+        fi
+    done
+    brew cask install virtualbox &>/dev/null ;
+    echo "Done."
 fi
+
+exit ;

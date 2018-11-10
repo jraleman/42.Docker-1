@@ -11,11 +11,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 14. Launch a wordpress container as a background task, just for fun.
+# Launch a wordpress container as a background task, just for fun.
 # The container should be named lair, its 80 port should be bound to the 8080
 # port of the virtual machine, and it should be able to use the spawning-pool
 # container as a database service. You can try to access lair on your machine
@@ -23,11 +23,13 @@ source "./_vars"
 #------------------------------------------------------------------------------#
 
 # Pulls the docker container.
-docker pull wordpress
+docker pull wordpress ;
 
 # Launch a wordpress container as a background task.
 WORDPRESS_ID=$(docker run --detach \
                           --name $WORDPRESS_CONTAINER \
                           --publish $WORDPRESS_PORT:80 \
-                          --link $DATABASE_CONTAINER:mysql wordpress)
-export WORDPRESS_ID
+                          --link $DATABASE_CONTAINER:mysql wordpress) ; 
+
+export WORDPRESS_ID ;
+exit ;

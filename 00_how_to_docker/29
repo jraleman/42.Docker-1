@@ -11,12 +11,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
+eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
-# 29. Display all the tasks of the marines service.
+# Display all the tasks of the marines service.
 #------------------------------------------------------------------------------#
 
 # Display all the tasks of the service.
-docker service ps $SERVICE_NAME3
+docker service ps $SERVICE_NAME3 ;
+
+exit ;

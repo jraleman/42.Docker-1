@@ -11,15 +11,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-source "./_vars"
+source "./_vars" ;
 
 #------------------------------------------------------------------------------#
-# 2. Get the IP address of the Char virtual machine.
+# Get the IP address of the Char virtual machine.
 #------------------------------------------------------------------------------#
 
 # Get the IP address of the VM.
-VM_IP=$(docker-machine ip $VM_NAME)
-export VM_IP
+VM_IP=$(docker-machine ip $VM_NAME) ;
+echo "Virtual Machine $VM_NAME IP: $VM_IP" ;
 
-echo "Virtual Machine $VM_NAME IP:" $VM_IP
+export VM_IP ;
+exit ;
