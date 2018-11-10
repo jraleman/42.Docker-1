@@ -10,8 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-FROM        php:7.1-apache
 MAINTAINER  Jose Ramon Aleman
+
+# Specifies Apache with PHP v7.1 as Base Image
+FROM        php:7.1-apache
 
 # Enviroment variables
 ENV         MATOMO_VERSION    3.6.1
@@ -110,12 +112,10 @@ RUN         set -ex \
               "https://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz" \
             && gunzip /usr/src/piwik/misc/GeoIPCity.dat.gz
 
-# Create entrypoint file
-COPY        docker-entrypoint.sh /entrypoint.sh
-
+# Create entrypoint, expose port, and execute container
 # WORKDIR is /var/www/html (inherited via "FROM php")
 # "/entrypoint.sh" will populate it at container startup from /usr/src/piwik
+COPY        docker-entrypoint.sh /entrypoint.sh
 VOLUME      /var/www/html
-
 ENTRYPOINT  ["/entrypoint.sh"]
 CMD         ["apache2-foreground"]
