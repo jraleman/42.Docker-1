@@ -11,17 +11,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-# if [[ $# -eq 0 ]] ; then
-# 	echo "Usage: sh $0 <path-to-docker-files>"
-# 	exit 0
-# fi
-
-declare n=0
-declare prefix=0
-# declare filepath=$1
-declare filepath="00_how_to_docker"
-declare count=$(ls -l ${filepath} | grep ^- | wc -l)
-declare filenames=(${filepath}/*)
+# Declare variables
+declare n=0 ;
+declare prefix=0 ;
+declare filepath="00_how_to_docker" ;
+declare filenames=(${filepath}/*) ;
+declare count=$(ls -l | grep ^- | wc -l) ;
 declare -a array=(
                   # Pre-setup
                   "Install required dependencies"
@@ -66,20 +61,20 @@ declare -a array=(
                   "Containers delete"
                   "Images delete"
                   "Machine delete"
-                  )
+                  ) ;
 
+# Start fresh
+sh "resources/clean.sh" &>/dev/null ;
+
+# Execute the scripts, one by one
 for n in {00..34}; do
-	echo "Running     :" ${filenames[$n]}
-	echo "Description :" ${array[$n]}
-	cd ${filepath}
-	sh $(printf "%02d\n" "$((10#$n))")
-	if [ $n -eq 01 ]; then
-		source "_vars"
-		eval $(docker-machine env $VN_NAME)
-		docker-machine start $VM_NAME
-	fi
-	cd ../
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ;
+	echo "Running     :" ${filenames[$n]} ;
+	echo "Description :" ${array[$n]} ;
+  cd ${filepath}
+	sh $(printf "%02d\n" "$((10#$n))") ;
+  cd ../
+	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ;
 done
 
 # Create log file out of stdout
