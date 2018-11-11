@@ -19,8 +19,8 @@
 if [ $(uname -s) = "Darwin" ] ; then
     # Update packages
     echo " > Updating / installing dependencies..." ;
-    brew update &>/dev/null ;
     echo "...this might take a few seconds" ;
+    brew update &>/dev/null ;
     # Install packages only if they don't exist
     for pkg in docker docker-machine shc ; do
         if brew list -1 | grep -q "^${pkg}\$"; then
