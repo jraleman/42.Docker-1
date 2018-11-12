@@ -11,7 +11,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-source "./_vars" ;
+source "_vars" ;
 
 #------------------------------------------------------------------------------#
 # Define the variables needed by your virtual machine Char in the general env

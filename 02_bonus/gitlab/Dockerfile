@@ -17,8 +17,9 @@ MAINTAINER  Jose Ramon Aleman
 FROM        ubuntu:14.04
 
 # Install required packages
-RUN         apt-get update -q && DEBIAN_FRONTEND=noninteractive \
-            apt-get install -yq --no-install-recommends \
+RUN         set -ex \
+            && apt-get update -q && DEBIAN_FRONTEND=noninteractive \
+            && apt-get install -yq --no-install-recommends \
                             ca-certificates \
                             openssh-server \
                             wget \
@@ -27,13 +28,15 @@ RUN         apt-get update -q && DEBIAN_FRONTEND=noninteractive \
                             nano
 
 # Download and install Gitlab
-RUN         echo "deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ `lsb_release -cs` main" \
-                    > /etc/apt/sources.list.d/gitlab_gitlab-ce.list
-RUN         wget -q -0 - https://packages.gitlab.com/gpg.key | apt-key add -
-RUN         apt-get update && apt-get install -yq --no-install-recommends gitlab-ce
+RUN         set -ex \
+            echo "deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ `lsb_release -cs` main" \
+                    > /etc/apt/sources.list.d/gitlab_gitlab-ce.list \
+            && wget -q -0 - https://packages.gitlab.com/gpg.key | apt-key add -
+            && apt-get update && apt-get install -yq --no-install-recommends gitlab-ce
 
 # Manage SSHD through runit
-RUN         mkdir -p /opt/gitlab/sv/sshd/supervise \
+RUN         set -ex \
+            && mkdir -p /opt/gitlab/sv/sshd/supervise \
             && mkfifo /opt/gitlab/sv/sshd/supervise/ok \
             && printf "#!/bin/sh\nexec 2>&1\numask 077\nexec /usr/sbin/sshd -D" \
                         > /opt/gitlab/sv/sshd/run \
@@ -42,7 +45,8 @@ RUN         mkdir -p /opt/gitlab/sv/sshd/supervise \
             && mkdir -p /var/run/sshd
 
 # Disable in using DNS in ssh, because it tends to slow connecting
-RUN         echo "UseDNS no" >> /etc/ssh/sshd_config
+RUN         set -ex \
+            && echo "UseDNS no" >> /etc/ssh/sshd_config
 
 # Prepare default configuration
 RUN         ( \
