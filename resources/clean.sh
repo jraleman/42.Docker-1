@@ -16,6 +16,7 @@ for machines in 'Char' 'Aiur' ; do
     docker ps -aq ;
     docker stop $(docker ps -aq) ;
     docker rm $(docker ps -aq) ;
+    yes | docker-machine rm $(docker-machine ls --format "{{.Name}}") ;
 done
 
 exit ;
