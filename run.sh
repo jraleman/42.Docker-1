@@ -64,7 +64,9 @@ declare -a array=(
                   ) ;
 
 # Start fresh
+echo "Starting up..."
 sh resources/clean.sh &>/dev/null ;
+source "${filepath}/_vars"
 
 # Execute the scripts, one by one
 for n in {00..34}; do
