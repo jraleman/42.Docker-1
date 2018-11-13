@@ -23,7 +23,7 @@
 # Test(s):
 # ```
 #   > docker build -t ex01 .
-#   > docker run -it ex01
+#   > docker run -it -p 30033:30033 -p 9987:9987/udp -p 10011:10011 ex01
 # ```
 #------------------------------------------------------------------------------#
 
@@ -32,17 +32,19 @@ FROM    debian
 
 # Download and install everything from the repos.
 RUN     DEBIAN_FRONTEND=noninteractive \
-        apt-get -y update && \
-        apt-get -y install bzip2 && \
-        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-        apt-get autoremove -y && \
-        apt-get clean
+        apt-get -y update \
+        && apt-get -y install ca-certificates bzip2 \
+        && apt-get autoremove -y \
+        && apt-get clean
+
+# Enviroment variable to accept TS3 license
+ENV     TS3SERVER_LICENSE="accept"
 
 # Download and install TeamSpeak 3.0.13.8
-ADD     http://dl.4players.de/ts/releases/3.0.13.8/teamspeak3-server_linux_amd64-3.0.13.8.tar.bz2 ./
-RUN     tar jxf teamspeak3-server_linux_amd64-3.0.13.8.tar.bz2 && \
-        mv teamspeak3-server_linux_amd64 /opt/teamspeak && \
-        rm teamspeak3-server_linux_amd64-3.0.13.8.tar.bz2
+ADD     http://dl.4players.de/ts/releases/3.5.0/teamspeak3-server_linux_amd64-3.5.0.tar.bz2 ./
+RUN     tar jxf teamspeak3-server_linux_amd64-3.5.0.tar.bz2 \
+        && mv teamspeak3-server_linux_amd64 /opt/teamspeak \
+        && rm teamspeak3-server_linux_amd64-3.5.0.tar.bz2
 
 # Load in all of our config files.
 ADD     ./start /start
