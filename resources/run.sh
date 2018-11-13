@@ -14,9 +14,9 @@
 # Declare variables
 declare n=0 ;
 declare prefix=0 ;
-declare filepath="./00_how_to_docker" ;
+declare filepath="../00_how_to_docker" ;
 declare filenames=(${filepath}/*) ;
-declare cleanScript="./resources/clean.sh" ;
+declare cleanScript="./clean.sh" ;
 declare count=$(ls -l | grep ^- | wc -l) ;
 declare -a array=(
                   # Pre-setup
