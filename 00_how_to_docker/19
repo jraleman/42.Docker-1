@@ -12,7 +12,7 @@
 # **************************************************************************** #
 
 source "_vars" ;
-eval $ENV_VAR ;
+
 
 #------------------------------------------------------------------------------#
 # Python container, 2-slim version, its /root folder will be bound to a
@@ -41,6 +41,11 @@ FLASK_ID=$(docker run -dt --name $FLASK_CONTAINER \
 
 export FLASK_ID ;
 exit ;
+
+# docker run -it --name abathur \
+#                           --volume /home/testing:/root/pendejada \
+#                           --publish 3000:3000 \
+#                           python:2-slim bash -c "pip install flask && python /root/pendejada/app.py"
 
 #*
 ## List of necessary commands :)
@@ -72,3 +77,10 @@ exit ;
 # echo "    app.run(host=\"0.0.0.0\", port=\"3000\")" >> ~root/app.py
 
 # python ~root/app.py
+
+# docker-machine ssh Char "cd /home && mkdir testing"
+# docker-machine scp ../resources/app.py Char:/home/testing
+# docker run -it --name abathur \
+#                           --volume /home/testing:/root/testing \
+#                           --publish 3000:3000 \
+#                           python:2-slim bash -c "pip install flask && python /root/testing/app.py"

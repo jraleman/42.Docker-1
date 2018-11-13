@@ -12,7 +12,6 @@
 # **************************************************************************** #
 
 source "_vars" ;
-eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
 # Create another virtual machine with docker-machine using the virtualbox

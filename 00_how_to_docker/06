@@ -12,7 +12,6 @@
 # **************************************************************************** #
 
 source "_vars" ;
-eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
 # Launch an nginx container, available on Docker Hub, as a background task.
@@ -26,10 +25,10 @@ eval $ENV_VAR ;
 docker pull nginx ;
 
 # Runs the container in the background (detached).
-SERVER_ID=$(docker run --detach \
-                       --name $SERVER_NAME \
-                       --publish $VM_IP:$SERVER_PORT:80 \
+CONTAINER_ID=$(docker run --detach \
+                       --name $CONTAINER_NAME \
+                       --publish $VM_IP:$CONTAINER_PORT:80 \
                        --restart=always nginx) ;
 
-export SERVER_ID ;
+export CONTAINER_ID ;
 exit ;

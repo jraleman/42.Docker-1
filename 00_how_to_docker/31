@@ -12,7 +12,6 @@
 # **************************************************************************** #
 
 source "_vars" ;
-eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
 # Force quit and delete all the services on the local swarm, in one command.

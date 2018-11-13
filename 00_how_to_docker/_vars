@@ -13,8 +13,8 @@
 
 # Declare variables
 declare VM_IP ;
-declare SERVER_ID ;
-declare SERVER_IP ;
+declare CONTAINER_ID ;
+declare CONTAINER_IP ;
 declare DATABASE_ID ;
 declare WORDPRESS_ID ;
 declare PHPMYADMIN_ID ;
@@ -25,8 +25,8 @@ declare ENV_VAR ;
 # Export variables
 export VM_NAME="Char" ;
 export VM_NAME2="Aiur" ;
-export SERVER_NAME="overlord" ;
-export SERVER_PORT="5000" ;
+export CONTAINER_NAME="overlord" ;
+export CONTAINER_PORT="5000" ;
 export VOLUME_NAME="hatchery" ;
 export DATABASE_NAME="zerglings" ;
 export DATABASE_PASS="Kerrigan" ;

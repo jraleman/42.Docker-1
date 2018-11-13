@@ -12,22 +12,16 @@
 # **************************************************************************** #
 
 source "_vars" ;
-eval $ENV_VAR ;
 
 #------------------------------------------------------------------------------#
 # Get the internal IP address of the overlord container without starting its
 # shell and in one command.
 #------------------------------------------------------------------------------#
 
-SERVER_ID=$(docker run --detach \
-                       --name $SERVER_NAME \
-                       --publish $VM_IP:$SERVER_PORT:80 \
-                       --restart=always nginx) ;
-
 # Get internal IP address of the container
-SERVER_IP=$(docker inspect --format \
-        '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $SERVER_ID) ;
-echo $SERVER_IP ;
+CONTAINER_IP=$(docker inspect --format \
+        '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_ID) ;
+echo $CONTAINER_IP ;
 
-export SERVER_IP ;
+export CONTAINER_IP ;
 exit ;
