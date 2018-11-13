@@ -14,8 +14,9 @@
 # Declare variables
 declare n=0 ;
 declare prefix=0 ;
-declare filepath="00_how_to_docker" ;
+declare filepath="./00_how_to_docker" ;
 declare filenames=(${filepath}/*) ;
+declare cleanScript="./resources/clean.sh" ;
 declare count=$(ls -l | grep ^- | wc -l) ;
 declare -a array=(
                   # Pre-setup
@@ -65,18 +66,23 @@ declare -a array=(
 
 # Start fresh
 echo "Starting up..."
-sh resources/clean.sh &>/dev/null ;
-source "${filepath}/_vars"
+sh ${cleanScript} ;
+source "${filepath}/_vars" ;
 
 # Execute the scripts, one by one
 for n in {00..34}; do
   echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ;
 	echo "Running     :" ${filenames[$n]} ;
 	echo "Description :" ${array[$n]} ;
-  cd ${filepath}
+  cd ${filepath} ;
+  if [ $n -gt 3 ] ; then
+    eval $ENV_VAR ;
+  fi
 	sh $(printf "%02d\n" "$((10#$n))") ;
-  cd ../
+  cd ../ ;
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ;
 done
 
 # Create log file out of stdout
+
+exit ;
