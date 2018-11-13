@@ -25,6 +25,9 @@ source "_vars" ;
 # via curl or a web browser, the IP address of your virtual machine on the\
 # 3000 port.
 # You will also list all the necessary commands in your repository.
+# ---
+#   docker-machine ssh $VM_NAME "cd /home && mkdir $FLASK_CONTAINER"
+#   docker-machine scp ../resources/app.py Char:/home/$FLASK_CONTAINER
 #------------------------------------------------------------------------------#
 
 # Directory to be bound from the /root directory of the python container.
@@ -37,50 +40,8 @@ docker pull python ;
 FLASK_ID=$(docker run -dt --name $FLASK_CONTAINER \
                           --volume $HOME/root:/root \
                           --publish $FLASK_PORT:3000 \
-                          python:2-slim bash) ;
+                          python:2-slim \
+                          bash -c 'pip install flask && python /root/app.py') ;
 
 export FLASK_ID ;
 exit ;
-
-# docker run -it --name abathur \
-#                           --volume /home/testing:/root/pendejada \
-#                           --publish 3000:3000 \
-#                           python:2-slim bash -c "pip install flask && python /root/pendejada/app.py"
-
-#*
-## List of necessary commands :)
-## .............................................................................
-#*
-
-# apt-get update && apt-get install -y pip
-# pip install Flask
-
-# touch ~root/app.py
-
-# echo "from flask import Flask" >> ~root/app.py
-# echo "app = Flask(__name__)" >> ~root/app.py
-# echo "" >> ~root/app.py
-# echo "@app.route('/')"  >> ~root/app.py
-# echo "" >> ~root/app.py
-# echo "def index():" >> ~root/app.py
-# echo "    return ('<!DOCTYPE html> \\" >> ~root/app.py
-# echo "             <html> \\" >> ~root/app.py
-# echo "               <head> \\" >> ~root/app.py
-# echo "                 <title>Hello World!</title> \\" >> ~root/app.py
-# echo "               </head> \\" >> ~root/app.py
-# echo "               <body> \\" >> ~root/app.py
-# echo "                 <h1>Hello World</h1> \\" >> ~root/app.py
-# echo "               </body> \\" >> ~root/app.py
-# echo "             </html>')" >> ~root/app.py
-# echo "" >> ~root/app.py
-# echo "if __name__ == \"__main__\":" >> ~root/app.py
-# echo "    app.run(host=\"0.0.0.0\", port=\"3000\")" >> ~root/app.py
-
-# python ~root/app.py
-
-# docker-machine ssh Char "cd /home && mkdir testing"
-# docker-machine scp ../resources/app.py Char:/home/testing
-# docker run -it --name abathur \
-#                           --volume /home/testing:/root/testing \
-#                           --publish 3000:3000 \
-#                           python:2-slim bash -c "pip install flask && python /root/testing/app.py"
