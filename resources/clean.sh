@@ -11,12 +11,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-for machines in 'Char' 'Aiur' ; do
-    eval $(docker-machine env "$machines") ;
-    docker ps -aq ;
-    docker stop $(docker ps -aq) ;
-    docker rm $(docker ps -aq) ;
-    yes | docker-machine rm $(docker-machine ls --format "{{.Name}}") ;
+source "00_how_to_docker/_vars" ;
+
+for machine in "Char" "Aiur" ; do
+    docker ps -aq &>/dev/null ;
+    docker stop $(docker ps -aq) &>/dev/null ;
+    docker rm $(docker ps -aq) &>/dev/null ;
+    yes | docker-machine rm $(docker-machine ls --format "$machine") &>/dev/null ;
 done
 
 exit ;
