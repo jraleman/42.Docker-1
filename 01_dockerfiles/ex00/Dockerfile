@@ -29,9 +29,9 @@
 # Specify the base image from the docker build.
 FROM  alpine
 
-# Downloads vim and write hello world! into a text file.
-RUN   apk add --update vim
-RUN   echo "hello world!" >> hello-world.txt
+# Downloads vim
+RUN   set -ex \
+      && apk add --update vim
 
-# Open hello-world.txt with Vim.
-ENTRYPOINT ["vim", "hello-world.txt"]
+# Open vim
+ENTRYPOINT ["vim"]
