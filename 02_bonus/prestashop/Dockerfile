@@ -10,26 +10,41 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Check README file! School made me do this I guess?
-MAINTAINER  Jose Ramon Aleman
+#------------------------------------------------------------------------------#
+# PrestaShop is a free and open-source e-commerce web application, committed to
+# providing the best shopping cart experience for both merchants and customers.
+# It is written in PHP, is highly customizable, supports all the major payment
+# services, is translated in many languages and localized for many countries,
+# has a fully responsive design (both front and back office), etc.
+#
+# Run it:
+#   > $ docker build -t prestashop/image .
+#   > $ docker network create prestashop-net
+#   > $ docker run -ti \
+#                  --name example-mysql \
+#                  --network prestashop-net \
+#                  -e MYSQL_ROOT_PASSWORD=admin \
+#                  -p 3307:3306 \
+#                  -d mysql:5.7
+#   > $ docker run -ti \
+#                  --name example-prestashop \
+#                  --network prestashop-net \
+#                  -e DB_SERVER=example-mysql -p 8080:80 \
+#                  -d prestashop/image
+#------------------------------------------------------------------------------#
 
-# Specifies Google Cloud SDK and Prestashop with frm borth as Base Image
-FROM        google/cloud-sdk:latest as nightly-storage
-FROM        prestashop/base:5.5-fpm
+# Runs latest Apache version in the official PHP repository as base image
+FROM      prestashop/base:5.6-apache
 
-# Enviroment variables
-ENV         PS_VERSION    nightly
+# Set PrestaShop version
+ENV       PS_VERSION    "1.4.11.0"
 
-# Copy GCSDK to prestashop package
-RUN         gsutil cp `gsutil ls gs://prestashop-core-nightly/ \
-              | grep .zip \
-              | tail -1` /tmp/prestashop.zip
+# Get PrestaShop
+ADD       https://www.prestashop.com/download/old/prestashop_1.4.11.0.zip /tmp/prestashop.zip
 
-# Install the GCSDK
-COPY        --from=nightly-storage /tmp/prestashop.zip /tmp/prestashop.zip
-
-# Extract Prestashop package
-RUN         mkdir -p /tmp/data-ps \
-            && unzip -q /tmp/prestashop.zip -d /tmp/data-ps/ \
-            && bash /tmp/ps-extractor.sh /tmp/data-ps \
-            && rm /tmp/prestashop.zip
+# Extract PrestaShop
+RUN       set -ex \
+          && mkdir -p /tmp/data-ps \
+	        && unzip -q /tmp/prestashop.zip -d /tmp/data-ps/ \
+	        && bash /tmp/ps-extractor.sh /tmp/data-ps \
+	        && rm /tmp/prestashop.zip
