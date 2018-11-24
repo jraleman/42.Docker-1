@@ -10,14 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Check README file! School made me do this I guess?
-MAINTAINER  Jose Ramon Aleman
-
 # Specifies Apache with PHP v7.1 as Base Image
 FROM        php:7.1-apache
 
 # Enviroment variables
-ENV         MATOMO_VERSION    3.6.1
+ENV         MATOMO_VERSION    "3.6.1"
 
 # Install required packages
 RUN         set -ex \
@@ -76,7 +73,7 @@ RUN         set -ex \
           		| cut -d: -f1 \
           		| sort -u \
           		| xargs -rt apt-mark manual \
-	          && apt-get purge -y --auto-remove
+	          && apt-get purge -y --auto-remove \
                              -o APT::AutoRemove::RecommendsImportant=false \
 	          && rm -rf /var/lib/apt/lists/*
 
@@ -84,7 +81,7 @@ RUN         set -ex \
 # dirmngr is a server for managing and downloading certificates
 # as well as updates and status signals related to those certificates.
 # gnupg is a tool for secure communication and data storage.
-RUN         set -ex; \
+RUN         set -ex \
 	          && fetchDeps="dirmngr gnupg" \
             && apt-get update \
 	          && apt-get install -y --no-install-recommends $fetchDeps \
@@ -100,7 +97,7 @@ RUN         set -ex; \
             && rm -rf "$GNUPGHOME" piwik.tar.gz.asc \
 	          && tar -xzf piwik.tar.gz -C /usr/src/ \
 	          && rm piwik.tar.gz \
-	          && apt-get purge -y --auto-remove -o
+	          && apt-get purge -y --auto-remove -o \
                 APT::AutoRemove::RecommendsImportant=false $fetchDeps \
 	          && rm -rf /var/lib/apt/lists/*
 
@@ -109,7 +106,7 @@ COPY        php.ini /usr/local/etc/php/conf.d/php-piwik.ini
 
 # Download and extract a liter version of GeoIPCity
 RUN         set -ex \
-	          && curl -fsSL -o /usr/src/piwik/misc/GeoIPCity.dat.gz
+	          && curl -fsSL -o /usr/src/piwik/misc/GeoIPCity.dat.gz \
               "https://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz" \
             && gunzip /usr/src/piwik/misc/GeoIPCity.dat.gz
 

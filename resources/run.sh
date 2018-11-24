@@ -78,10 +78,15 @@ for n in {00..34}; do
   if [ $n -gt 3 ] ; then
     eval $ENV_VAR ;
   fi
+  # SKIP #19...
 	sh $(printf "%02d\n" "$((10#$n))") ;
   cd ../ ;
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ;
 done
+
+# Part 1 (mandatory)
+
+# Part 2 (bonus)
 
 # Create log file out of stdout
 
