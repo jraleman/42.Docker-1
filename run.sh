@@ -14,7 +14,7 @@
 # Declare variables
 declare n=0 ;
 declare prefix=0 ;
-declare filepath="../00_how_to_docker" ;
+declare filepath="./00_how_to_docker" ;
 declare filenames=(${filepath}/*) ;
 declare cleanScript="./clean.sh" ;
 declare count=$(ls -l | grep ^- | wc -l) ;
@@ -78,8 +78,11 @@ for n in {00..34}; do
   if [ $n -gt 3 ] ; then
     eval $ENV_VAR ;
   fi
-  # SKIP #19...
-	sh $(printf "%02d\n" "$((10#$n))") ;
+  fi [ $n -eq 19 ] ; then
+    echo "Skipping 19..." ;
+  else
+	  sh $(printf "%02d\n" "$((10#$n))") ;
+  fi
   cd ../ ;
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ;
 done
