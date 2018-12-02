@@ -19,57 +19,59 @@ declare filenames=(${filepath}/*) ;
 declare cleanScript="./clean.sh" ;
 declare count=$(ls -l | grep ^- | wc -l) ;
 declare -a array=(
-                  # Pre-setup
-                  "Install required dependencies"
-                  # Machines
-                  "Create a new docker machine"
-                  "Get IP of a machine"
-                  "Define variables"
-                  # Containers
-                  "Create a new pull container"
-                  "Run a container"
-                  "Create nginx container"
-                  "Get the IP address of a container"
-                  "Launch Alpine Linux container"
-                  "Launch Debian container"
-                  # Volumes
-                  "Create volumes"
-                  "List volumes"
-                  # Container types
-                  "MySQL Container"
-                  "Print container variables"
-                  "Wordpress Container"
-                  "PHPMyAdmin container"
-                  "Container operations"
-                  "Database logs"
-                  "Display container"
-                  "Restart container"
-                  # Swarms
-                  "Create swarm"
-                  "Create a second Docker machine"
-                  "Join swarm"
-                  "Overlay network"
-                  # Services
-                  "Create service"
-                  "List services"
-                  "Service replicas"
-                  "Service logs"
-                  "A second service replica"
-                  "Service task"
-                  "Service scale"
-                  # Delete
-                  "Service delete"
-                  "Containers delete"
-                  "Images delete"
-                  "Machine delete"
-                  ) ;
+  # Pre-setup
+  "Install required dependencies"
+  # Machines
+  "Create a new docker machine"
+  "Get IP of a machine"
+  "Define variables"
+  # Containers
+  "Create a new pull container"
+  "Run a container"
+  "Create nginx container"
+  "Get the IP address of a container"
+  "Launch Alpine Linux container"
+  "Launch Debian container"
+  # Volumes
+  "Create volumes"
+  "List volumes"
+  # Container types
+  "MySQL Container"
+  "Print container variables"
+  "Wordpress Container"
+  "PHPMyAdmin container"
+  "Container operations"
+  "Database logs"
+  "Display container"
+  "Restart container"
+  # Swarms
+  "Create swarm"
+  "Create a second Docker machine"
+  "Join swarm"
+  "Overlay network"
+  # Services
+  "Create service"
+  "List services"
+  "Service replicas"
+  "Service logs"
+  "A second service replica"
+  "Service task"
+  "Service scale"
+  # Delete
+  "Service delete"
+  "Containers delete"
+  "Images delete"
+  "Machine delete"
+) ;
 
 # Start fresh
 echo "Starting up..."
 sh ${cleanScript} ;
 source "${filepath}/_vars" ;
 
-# Execute the scripts, one by one
+# Part 00 - How to Docker
+#   -> Execute the scripts, one by one
+echo "Part 00 -> How to Docker" ;
 for n in {00..34}; do
   echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ;
 	echo "Running     :" ${filenames[$n]} ;
@@ -80,6 +82,7 @@ for n in {00..34}; do
   fi
   fi [ $n -eq 19 ] ; then
     echo "Skipping 19..." ;
+    echo "Run this file independently!"
   else
 	  sh $(printf "%02d\n" "$((10#$n))") ;
   fi
@@ -89,7 +92,11 @@ done
 
 # Part 1 (mandatory)
 
+
+
 # Part 2 (bonus)
+
+
 
 # Create log file out of stdout
 
