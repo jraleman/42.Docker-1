@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    03_define-variables.sh                             :+:      :+:    :+:    #
+#    03                                                 :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -11,8 +11,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Include exported enviroment variables
-. "./_ENV.sh"
+source "_vars" ;
 
 #------------------------------------------------------------------------------#
 # 3. Define the variables needed by your virtual machine Char in the general env
@@ -20,5 +19,5 @@
 #------------------------------------------------------------------------------#
 
 # Define the variables of the VM in the general env of the terminal.
-eval $(docker-machine env "$VM_NAME")
-echo "Variables defined"
+eval $(docker-machine env "$VM_NAME") ;
+echo "Variables defined" ;
