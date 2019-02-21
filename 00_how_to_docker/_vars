@@ -20,7 +20,6 @@ declare WORDPRESS_ID ;
 declare PHPMYADMIN_ID ;
 declare FLASK_ID ;
 declare SWARM_TOKEN ;
-declare ENV_VAR ;
 
 # Export variables
 export VM_NAME="Char" ;
@@ -41,8 +40,7 @@ export FLASK_PORT="3000" ;
 export SWARM_PORT="2377" ;
 export OVERLAY_NETWORK="overmind" ;
 export SERVICE_NAME="orbital-command" ;
-export SERVICE_USER="orbital-command" ;
-export SERVICE_PASS="orbital-command" ;
+export SERVICE_USER="user" ;
+export SERVICE_PASS="password" ;
 export SERVICE_NAME2="engineering-bay" ;
 export SERVICE_NAME3="marine-squad" ;
-export ENV_VAR=$(docker-machine env "$VM_NAME") ;
