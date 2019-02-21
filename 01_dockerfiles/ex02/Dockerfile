@@ -11,18 +11,19 @@
 # **************************************************************************** #
 
 #------------------------------------------------------------------------------#
-# You are going to create your first Dockerfile to containerize Rails
-# applications. That’s a special configuration: this particular Dockerfile
-# will be generic, and called in another Dockerfile, that will look something
+# You have to have rails installed in your computer in order to test this!!
+#
+# This particular Dockerfile will be generic, and called in another Dockerfile,
+# that will look something
 # like this:
 #   > FROM        ft-rails:5.0.2-on-build
 #   > CMD         ["rails", "s", "-b", "0.0.0.0"]
-# Your generic container should install, via a ruby container,
-# all the necessary dependencies and gems, then copy your rails application
-# in the /opt/app folder of your container. Docker has to install the
-# approtiate gems when it builds, but also launch the migrations and the
-# db population for your application. The child Dockerfile should launch
-# the rails server.
+# The generic container should install, via a ruby container, all the necessary
+# dependencies and gems, then copy your in application in the /opt/app directory
+# of the container. 
+# Docker has to install the approtiate gems when it builds, but also launch 
+# the migrations and the db population for your application. 
+# The child Dockerfile should launch the rails server.
 #
 # Tests
 #   30 Fibonacci Numbers Without Using Numbers In Ruby
@@ -34,17 +35,21 @@
 FROM              ruby
 
 # Install rails and create the rails application path.
-RUN               apt-get update \
+RUN               set -ex \
+                  && apt-get update \
                   && apt-get upgrade -y \
                   && apt-get install -y \
                       build-essential \
                       sqlite3 \
                       nodejs
-RUN               gem install rails \
+RUN               set -ex \
+                  && gem install rails \
                   && gem install bundler \
-RUN               mkdir /opt/app
+RUN               set -ex \
+                  && mkdir /opt/app
 
 # Add the application to the application path.
+# WORKDIR /opt/app
 ONBUILD WORKDIR   /opt/app
 ONBUILD ADD       . /opt/app
 
