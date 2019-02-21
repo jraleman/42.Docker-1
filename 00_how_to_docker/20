@@ -19,4 +19,4 @@ source "_vars" ;
 
 # Create a local swarm.
 # More about swarms: https://www.youtube.com/watch?v=KC4Ad1DS8xU
-docker swarm init --advertise-addr $VM_IP ;
+docker swarm init --advertise-addr=`docker-machine ip $VM_NAME` ;
