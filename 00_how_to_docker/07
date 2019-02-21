@@ -19,9 +19,7 @@ source "_vars" ;
 #------------------------------------------------------------------------------#
 
 # Get internal IP address of the container
-CONTAINER_IP=$(docker inspect --format \
-        '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_ID) ;
-echo $CONTAINER_IP ;
+CONTAINER_IP=$(docker inspect \
+        --format '{{ .NetworkSettings.IPAddress }}' $CONTAINER_NAME) ;
 
 export CONTAINER_IP ;
-exit ;
