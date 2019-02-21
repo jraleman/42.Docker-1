@@ -20,5 +20,3 @@ source "_vars" ;
 
 # Runs the hello-world container.
 docker run hello-world ;
-
-exit ;

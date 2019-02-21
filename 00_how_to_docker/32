@@ -20,5 +20,3 @@ source "_vars" ;
 
 # Force quit and delete all the containers
 docker rm --force $(docker ps -a -q) ;
-
-exit ;

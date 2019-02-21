@@ -29,4 +29,3 @@ PHPMYADMIN_ID=$(docker run --detach \
                            phpmyadmin/phpmyadmin) ;
 
 export PHPMYADMIN_ID ;
-exit ;

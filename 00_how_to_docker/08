@@ -24,5 +24,3 @@ docker pull alpine ;
 
 # Runs a shell from stdin, and deletes itself one its execution is done.
 docker run -it --rm alpine /bin/ash ;
-
-exit ;

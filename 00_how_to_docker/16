@@ -21,5 +21,3 @@ source "_vars" ;
 
 # Prints container's logs.
 docker logs --follow $DATABASE_CONTAINER ;
-
-exit ;

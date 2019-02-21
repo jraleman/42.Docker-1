@@ -44,4 +44,3 @@ FLASK_ID=$(docker run -dt --name $FLASK_CONTAINER \
                           bash -c 'pip install flask && python /root/app.py') ;
 
 export FLASK_ID ;
-exit ;

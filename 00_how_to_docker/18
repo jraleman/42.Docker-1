@@ -19,5 +19,3 @@ source "_vars" ;
 
 # Restart a container.
 docker restart $CONTAINER_NAME ;
-
-exit ;

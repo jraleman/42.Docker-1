@@ -20,5 +20,3 @@ source "_vars" ;
 
 # Delete all the container images.
 docker rmi -f $(docker images -a -q) ;
-
-exit ;

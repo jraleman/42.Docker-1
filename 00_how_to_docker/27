@@ -19,7 +19,5 @@ source "_vars" ;
 
 # Get the real-time logs.
 docker service logs --follow `docker service ps \
-                              --filter "name=engineering-bay.2" $SERVICE_NAME2 \
+                              --filter "name=$SERVICE_NAME2.2" $SERVICE_NAME2 \
                               --quiet` ;
-
-exit ;

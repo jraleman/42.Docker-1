@@ -31,4 +31,3 @@ WORDPRESS_ID=$(docker run --detach \
                           --link $DATABASE_CONTAINER:mysql wordpress) ;
 
 export WORDPRESS_ID ;
-exit ;

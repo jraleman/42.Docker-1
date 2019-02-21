@@ -19,5 +19,3 @@ source "_vars" ;
 
 # List all the services of the local swarm.
 docker service ls
-
-exit ;

@@ -20,5 +20,3 @@ source "_vars" ;
 
 # Create a VM using the virtualbox diver.
 docker-machine create --driver=virtualbox $VM_NAME ;
-
-exit ;

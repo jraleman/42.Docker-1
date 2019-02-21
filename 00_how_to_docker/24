@@ -26,5 +26,3 @@ docker service create --name $SERVICE_NAME \
                       -e RABBITMQ_DEFAULT_USER=$SERVICE_USER \
                       -e RABBITMQ_DEFAULT_PASS=$SERVICE_PASS \
                       rabbitmq
-
-exit ;

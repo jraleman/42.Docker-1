@@ -19,5 +19,3 @@ source "_vars" ;
 
 # Create a volume.
 docker volume create $VOLUME_NAME ;
-
-exit ;

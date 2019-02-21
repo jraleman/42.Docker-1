@@ -19,5 +19,3 @@ source "_vars" ;
 
 # List all the volumes created on the machine.
 docker volume ls ;
-
-exit ;

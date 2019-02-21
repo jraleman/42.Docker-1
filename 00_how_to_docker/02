@@ -22,4 +22,3 @@ VM_IP=$(docker-machine ip $VM_NAME) ;
 echo "Virtual Machine $VM_NAME IP: $VM_IP" ;
 
 export VM_IP ;
-exit ;

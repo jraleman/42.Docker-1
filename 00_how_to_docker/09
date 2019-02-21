@@ -33,5 +33,3 @@ docker run -it --rm debian /bin/sh ;
 
 # apt-get update && apt-get upgrade -y
 # apt-get install -y build-essential gcc git
-
-exit ;

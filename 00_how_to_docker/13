@@ -20,5 +20,3 @@ source "_vars" ;
 
 # Print the enviroment variables of the container.
 docker inspect --format='{{.Config.Env}}' $DATABASE_CONTAINER ;
-
-exit ;

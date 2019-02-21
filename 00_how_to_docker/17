@@ -19,5 +19,3 @@ source "_vars" ;
 
 # Display all the currently active containers.
 docker ps ;
-
-exit ;

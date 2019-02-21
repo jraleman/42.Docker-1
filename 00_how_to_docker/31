@@ -19,5 +19,3 @@ source "_vars" ;
 
 # Force quit and delete all the services on the local swarm.
 docker swarm leave --force ;
-
-exit ;

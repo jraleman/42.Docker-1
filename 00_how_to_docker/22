@@ -20,10 +20,12 @@ source "_vars" ;
 
 # Manage join tokens
 # https://docs.docker.com/engine/reference/commandline/swarm_join-token/
-SWARM_TOKEN=$(docker swarm join-token worker -q) ;
+# SWARM_TOKEN=$(docker swarm join-token worker -q) ;
 
 # Join a swarm as a node and/or manager
 # https://docs.docker.com/engine/reference/commandline/swarm_join/
-docker swarm join --token $SWARM_TOKEN $VM_IP:$SWARM_PORT ;
+# docker swarm join --token $SWARM_TOKEN $VM_IP:$SWARM_PORT ;
 
-export SWARM_TOKEN ;
+# export SWARM_TOKEN ;
+
+docker-machine ssh $VM_NAME2 `docker swarm join-token worker | grep token`

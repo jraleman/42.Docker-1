@@ -26,5 +26,3 @@ docker service create --name $SERVICE_NAME2 \
                       -e OC_DEFAULT_PASS=$SERVICE_PASS \
                       --replicas 2 \
                       42school/$SERVICE_NAME2
-
-exit ;

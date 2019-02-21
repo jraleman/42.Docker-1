@@ -21,5 +21,3 @@ source "_vars" ;
 
 # Increase the number of copies in a service.
 docker service scale $SERVICE_NAME3=20 ;
-
-exit ;

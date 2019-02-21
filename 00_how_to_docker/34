@@ -19,5 +19,3 @@ source "_vars" ;
 
 # Delete a virtual machine.
 docker-machine rm $VM_NAME2 --force ;
-
-exit ;

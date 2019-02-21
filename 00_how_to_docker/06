@@ -31,4 +31,3 @@ CONTAINER_ID=$(docker run --detach \
                        --restart=always nginx) ;
 
 export CONTAINER_ID ;
-exit ;

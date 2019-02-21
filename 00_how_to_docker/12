@@ -32,4 +32,3 @@ DATABASE_ID=$(docker run --detach --restart=on-failure \
                          --volume $VOLUME_NAME:/var/spool/mysql mysql:5.7) ;
 
 export DATABASE_ID ;
-exit ;

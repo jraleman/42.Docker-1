@@ -19,5 +19,3 @@ source "_vars" ;
 
 # Create an overlay internal network.
 docker network create --internal --driver overlay $OVERLAY_NETWORK ;
-
-exit ;
