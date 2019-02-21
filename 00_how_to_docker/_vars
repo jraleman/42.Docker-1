@@ -20,6 +20,7 @@ declare WORDPRESS_ID ;
 declare PHPMYADMIN_ID ;
 declare FLASK_ID ;
 declare SWARM_TOKEN ;
+declare SERVICE_ID ;
 
 # Export variables
 export VM_NAME="Char" ;
