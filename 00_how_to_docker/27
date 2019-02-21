@@ -17,7 +17,8 @@ source "_vars" ;
 # Get the real-time logs of one the tasks of the engineering-bay service.
 #------------------------------------------------------------------------------#
 
+# Get the service ids
+SERVICE_ID=$(docker service ps -f name=engineering-bay.1 engineering-bay -q)
+
 # Get the real-time logs.
-docker service logs --follow `docker service ps \
-                              --filter "name=$SERVICE_NAME2.2" $SERVICE_NAME2 \
-                              --quiet` ;
+docker service logs -f "$($SERVICE_ID | head -n1 | cut -d " " -f1)"
