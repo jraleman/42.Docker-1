@@ -27,11 +27,12 @@
 #------------------------------------------------------------------------------#
 
 # Specify the base image from the docker build.
-FROM        alpine
+FROM    alpine
 
 # Downloads vim
-RUN         set -ex \
-            && apk add --update vim
+RUN     set -ex \
+        && apk update \
+        && apk add vim
 
 # Open vim
-ENTRYPOINT  ["vim"]
+CMD     ["vim"]

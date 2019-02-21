@@ -32,7 +32,8 @@ FROM    debian
 
 # Download and install everything from the repos.
 RUN     DEBIAN_FRONTEND=noninteractive \
-        apt-get -y update \
+        set -ex \
+        && apt-get -y update \
         && apt-get -y install ca-certificates bzip2 \
         && apt-get autoremove -y \
         && apt-get clean
@@ -43,7 +44,8 @@ ENV     TS3SERVER_VERSION   "3.5.0"
 
 # Download and install TeamSpeak 3.0.13.8
 ADD     http://dl.4players.de/ts/releases/${TS3SERVER_VERSION}/teamspeak3-server_linux_amd64-${TS3SERVER_VERSION}.tar.bz2 ./
-RUN     tar jxf teamspeak3-server_linux_amd64-${TS3SERVER_VERSION}.tar.bz2 \
+RUN     set -ex \ 
+        && tar jxf teamspeak3-server_linux_amd64-${TS3SERVER_VERSION}.tar.bz2 \
         && mv teamspeak3-server_linux_amd64 /opt/teamspeak \
         && rm teamspeak3-server_linux_amd64-${TS3SERVER_VERSION}.tar.bz2
 
