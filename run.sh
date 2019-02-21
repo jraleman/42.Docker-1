@@ -16,7 +16,7 @@ declare n=0 ;
 declare prefix=0 ;
 declare filepath="./00_how_to_docker" ;
 declare filenames=(${filepath}/*) ;
-declare cleanScript="./clean.sh" ;
+declare cleanScript="./resources/clean.sh" ;
 declare count=$(ls -l | grep ^- | wc -l) ;
 declare -a array=(
   # Pre-setup
@@ -78,16 +78,14 @@ for n in {00..34}; do
 	echo "Description :" ${array[$n]} ;
   cd ${filepath} ;
   if [ $n -gt 3 ] ; then
-    eval $ENV_VAR ;
+    eval $(docker-machine env "$VM_NAME")
   fi
-  fi [ $n -eq 19 ] ; then
-    echo "Skipping 19..." ;
-    echo "Run this file independently!"
-  else
-	  sh $(printf "%02d\n" "$((10#$n))") ;
+  if [ $n -eq 19 ] ; then
+    docker-machine ssh "$VM_NAME" "cd /home && mkdir $FLASK_CONTAINER"
+    docker-machine scp "../resources/app.py" "$VM_NAME:/home/$FLASK_CONTAINER"
   fi
+  sh $(printf "%02d\n" "$((10#$n))") ;
   cd ../ ;
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" ;
 done
 
 # Part 1 (mandatory)
