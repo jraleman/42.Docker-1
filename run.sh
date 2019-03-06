@@ -64,9 +64,9 @@ declare -a array=(
   "Machine delete"
 ) ;
 
-# Start fresh
-echo "Starting up..."
-sh ${cleanScript} ;
+# A new beginning
+echo "Starting up..." ;
+sh ${cleanScript} &>/dev/null ;
 source "${filepath}/_vars" ;
 
 # Part 00 - How to Docker
@@ -78,24 +78,14 @@ for n in {00..34}; do
 	echo "Description :" ${array[$n]} ;
   cd ${filepath} ;
   if [ $n -gt 3 ] ; then
-    eval $(docker-machine env "$VM_NAME")
+    eval $(docker-machine env "$VM_NAME") ;
   fi
   if [ $n -eq 19 ] ; then
-    docker-machine ssh "$VM_NAME" "cd /home && mkdir $FLASK_CONTAINER"
-    docker-machine scp "../resources/app.py" "$VM_NAME:/home/$FLASK_CONTAINER"
+    docker-machine ssh "$VM_NAME" "cd /home && mkdir $FLASK_CONTAINER" ;
+    docker-machine scp "../resources/app.py" "$VM_NAME:/home/$FLASK_CONTAINER" ;
   fi
   sh $(printf "%02d\n" "$((10#$n))") ;
   cd ../ ;
 done
-
-# Part 1 (mandatory)
-
-
-
-# Part 2 (bonus)
-
-
-
-# Create log file out of stdout
 
 exit ;
