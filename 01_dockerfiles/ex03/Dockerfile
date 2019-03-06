@@ -10,59 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Specifies Debian Linux (Jessie) as Base Image
-FROM        debian:jessie
+# Sources:
+# https://vidhyachari.wordpress.com/2017/09/01/setting-up-gogs-on-docker/
+# https://github.com/rosstimson/docker-gogs
 
-# Install required packages
-RUN         set -ex \
-            && apt-get update -q && DEBIAN_FRONTEND=noninteractive \
-            && apt-get install -yq --no-install-recommends \
-                            ca-certificates \
-                            openssh-server \
-                            wget \
-                            apt-transport-https \
-                            vim \
-                            nano
-
-# Download and install Gitlab
-RUN         set -ex \
-            && echo "deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ `lsb_release -cs` main" \
-                    > /etc/apt/sources.list.d/gitlab_gitlab-ce.list \
-            && wget -q -0 - https://packages.gitlab.com/gpg.key | apt-key add -
-            && apt-get update && apt-get install -yq --no-install-recommends gitlab-ce
-
-# Manage SSHD through runit
-RUN         set -ex \
-            && mkdir -p /opt/gitlab/sv/sshd/supervise \
-            && mkfifo /opt/gitlab/sv/sshd/supervise/ok \
-            && printf "#!/bin/sh\nexec 2>&1\numask 077\nexec /usr/sbin/sshd -D" \
-                        > /opt/gitlab/sv/sshd/run \
-            && chmod a+x /opt/gitlab/sv/sshd/run \
-            && ln -s /opt/gitlab/sv/sshd /opt/gitlab/service \
-            && mkdir -p /var/run/sshd
-
-# Disable in using DNS in ssh, because it tends to slow connecting
-RUN         set -ex \
-            && echo "UseDNS no" >> /etc/ssh/sshd_config
-
-# Prepare default configuration
-RUN         ( \
-              echo "" \
-              && echo "# Docker options"  \
-              && echo "# Prevent Postgres from trying to allocate 25% of total memory" \
-              && echo "postgresql['shared_buffers'] = '1MB'" \
-            ) >> /etc/gitlab/gitlab.rb \
-            && mkdir -p /assets/  \
-            && cp /etc/gitlab/gitlab.rb /assets/gitlab.rb
-
-# Expose web & ssh ports (https, http, ssh)
-EXPOSE      443 80 22
-
-# Define data volumes
-VOLUME      ["/etc/gitlab", "/var/opt/gitlab", "/var/log/gitlab"]
-
-# Copy assets
-COPY        assets/wrapper /usr/local/bin/
-
-# Wrapper to handle signal, trigger runit and reconfigure GitLab
-CMD         ["/usr/local/bin/wrapper"]
+#------------------------------------------------------------------------------#
+# Design a Dockerfile that gets the development version of Gogs, installs it
+# with all the dependencies and the necessary configurations, and launches the
+# application, all as it builds. The container will be deemed valid if you can
+# access the web client, and if you can interact via GIT with this container.
+# Test(s):
+# ```
+#   > docker build -t gogs .
+#   > docker run --detach --name Gogs --publish 3000:3000 gogs
+#   > docker run -it gogs
+# ```
+#------------------------------------------------------------------------------#
